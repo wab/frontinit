@@ -1,8 +1,10 @@
-var path = require('path')
-var config = require('../config')
-var projectRoot = path.resolve(__dirname, '../')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var extractCSS = new ExtractTextPlugin('main.css')
+const path = require('path')
+const webpack = require('webpack')
+const config = require('../config')
+const projectRoot = path.resolve(__dirname, '../')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const extractCSS = new ExtractTextPlugin('main.css')
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: {
@@ -36,11 +38,11 @@ module.exports = {
     loaders: [
       {
         test: /\.css$/i,
-        loader: extractCSS.extract(['css'])
+        loader: extractCSS.extract(['css', 'postcss'])
       },
       {
         test: /\.scss$/i,
-        loader: extractCSS.extract(['css', 'sass'])
+        loader: extractCSS.extract(['css', 'postcss', 'sass'])
       },
       {
         test: /\.js/,
@@ -62,11 +64,8 @@ module.exports = {
       }
     ]
   },
-  sassLoader: {
-    includePaths: [
-      path.resolve(__dirname, '../node_modules/foundation-sites/scss/'),
-      path.resolve(__dirname, '../node_modules/font-awesome/scss/')
-    ]
+  postcss: function () {
+    return [autoprefixer];
   },
   plugins: [
     extractCSS
