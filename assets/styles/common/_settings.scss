@@ -55,10 +55,10 @@ $foundation-palette: (
   warning: #ffae00,
   alert: #ec5840,
 );
-$light-gray: #eee;
-$medium-gray: #999;
-$dark-gray: #555;
-$black: #333;
+$light-gray: #e6e6e6;
+$medium-gray: #cacaca;
+$dark-gray: #8a8a8a;
+$black: #0a0a0a;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
@@ -70,7 +70,7 @@ $global-weight-normal: normal;
 $global-weight-bold: bold;
 $global-radius: 0;
 $global-text-direction: ltr;
-$global-flexbox: true;
+$global-flexbox: false;
 $print-transparent-backgrounds: true;
 
 @include add-foundation-colors;
@@ -504,6 +504,7 @@ $table-stripe: even;
 $table-head-background: smart-scale($table-background, $table-color-scale / 2);
 $table-foot-background: smart-scale($table-background, $table-color-scale);
 $table-head-font-color: $body-font-color;
+$table-foot-font-color: $body-font-color;
 $show-header-for-stacked: false;
 
 // 32. Tabs
@@ -564,4 +565,3 @@ $topbar-submenu-background: $topbar-background;
 $topbar-title-spacing: 1rem;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
-
