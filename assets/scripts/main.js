@@ -1,6 +1,10 @@
 // import external dependencies
 import 'jquery'
 
+// import npm dependencies
+import 'foundation-sites/js/foundation.core';
+import 'foundation-sites/js/foundation.util.mediaQuery';
+
 // import local dependencies
 import Router from './util/router';
 import common from './routes/Common';

@@ -8,7 +8,8 @@ var webpack = require('webpack'),
     AssetsPlugin = require('assets-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
-    cssnano = require('cssnano');
+    cssnano = require('cssnano'),
+    SvgStore = require('webpack-svgstore-plugin');
 
 // Internal dependencies
 var config = require('./assets/config');
@@ -195,6 +196,18 @@ webpackConfig = {
       'window.jQuery': 'jquery',
       'Tether': 'tether',
       'window.Tether': 'tether'
+    }),
+    new SvgStore({
+      // svgo options
+      svgoOptions: {
+        plugins: [{
+          removeTitle: false,
+          collapseGroups: true,
+          removeEmptyContainers: true,
+          removeEditorsNSData: true,
+          removeDimensions: true
+        }]
+      }
     }),
     new webpack.DefinePlugin({
       WEBPACK_PUBLIC_PATH: (argv.watch === true) ? JSON.stringify(path.join(config.publicPath, dist)) : false
